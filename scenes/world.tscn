@@ -15,5 +15,6 @@ script = ExtResource("1_rwgxs")
 shape = SubResource("RectangleShape2D_rwgxs")
 
 [node name="Sprite2D" type="Sprite2D" parent="Player"]
+position = Vector2(189, 103)
 scale = Vector2(0.3, 0.3)
 texture = ExtResource("1_nnsk1")
