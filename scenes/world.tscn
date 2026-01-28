@@ -2,19 +2,76 @@
 
 [ext_resource type="Texture2D" uid="uid://cftllq6l7xclt" path="res://icon.svg" id="1_nnsk1"]
 [ext_resource type="Script" uid="uid://brbcn1r1s8qqb" path="res://code/player.gd" id="1_rwgxs"]
+[ext_resource type="Texture2D" uid="uid://bqnhceo5kkrv5" path="res://Art test/Stegosaurus_f1.png" id="3_k0juu"]
+[ext_resource type="Texture2D" uid="uid://0wvs20wa71l2" path="res://Art test/Stegosaurus_f2.png" id="4_71j4m"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_rwgxs"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_k0juu"]
+radius = 23.957733
+height = 134.1325
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qfnet"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_k0juu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_71j4m")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
 
 [node name="World" type="Node2D" unique_id=1699676547]
 
 [node name="Player" type="CharacterBody2D" parent="." unique_id=1114277458]
 position = Vector2(200, 200)
 script = ExtResource("1_rwgxs")
+metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player" unique_id=1135382948]
-shape = SubResource("RectangleShape2D_rwgxs")
+position = Vector2(3, -2)
+rotation = -1.6128609
+shape = SubResource("CapsuleShape2D_k0juu")
 
 [node name="Sprite2D" type="Sprite2D" parent="Player" unique_id=485544559]
-position = Vector2(225, 63)
+visible = false
 scale = Vector2(0.3, 0.3)
 texture = ExtResource("1_nnsk1")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Player" unique_id=625429836]
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_qfnet")
+animation = &"walk"
+
+[node name="UI" type="CanvasLayer" parent="." unique_id=386769772]
+
+[node name="Label" type="Label" parent="UI" unique_id=2028154644]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -89.0
+offset_right = 89.0
+offset_bottom = 39.0
+grow_horizontal = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 28
+text = "Lorem Ipsum"
+
+[node name="Button" type="Button" parent="UI" unique_id=505871046]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -100.0
+offset_top = -107.0
+offset_right = 100.0
+offset_bottom = -37.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 21
+text = "This is a button"
