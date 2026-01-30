@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://pdu7dbqr0apt"]
+
+[ext_resource type="Script" uid="uid://b15nh32oqt717" path="res://code/trap.gd" id="1_62q8x"]
+[ext_resource type="Texture2D" uid="uid://cftllq6l7xclt" path="res://icon.svg" id="1_npg1n"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_71j4m"]
+size = Vector2(50, 50)
+
+[node name="Trap" type="Area2D" unique_id=1946059478]
+collision_layer = 9
+script = ExtResource("1_62q8x")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1855251982]
+shape = SubResource("RectangleShape2D_71j4m")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1327741693]
+visible = false
+self_modulate = Color(1, 0, 0, 0.26666668)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("1_npg1n")

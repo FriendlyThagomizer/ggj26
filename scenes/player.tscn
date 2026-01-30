@@ -5,9 +5,8 @@
 [ext_resource type="Texture2D" uid="uid://bqnhceo5kkrv5" path="res://Art test/Stegosaurus_f1.png" id="3_tuyoq"]
 [ext_resource type="Texture2D" uid="uid://0wvs20wa71l2" path="res://Art test/Stegosaurus_f2.png" id="4_fjrip"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_k0juu"]
-radius = 23.957733
-height = 134.1325
+[sub_resource type="CircleShape2D" id="CircleShape2D_dqkch"]
+radius = 15.0
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_qfnet"]
 animations = [{
@@ -23,14 +22,14 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_qlg0r"]
+
 [node name="Player" type="CharacterBody2D" unique_id=297528954]
 script = ExtResource("1_dqkch")
 metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=655946298]
-position = Vector2(3, -2)
-rotation = -1.6128609
-shape = SubResource("CapsuleShape2D_k0juu")
+shape = SubResource("CircleShape2D_dqkch")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=930730279]
 visible = false
@@ -38,7 +37,17 @@ scale = Vector2(0.3, 0.3)
 texture = ExtResource("2_qlg0r")
 
 [node name="Animation" type="AnimatedSprite2D" parent="." unique_id=1376772563]
+visible = false
 scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_qfnet")
 animation = &"walk"
 frame_progress = 0.5798601
+
+[node name="TrapCheck" type="Area2D" parent="." unique_id=1939735913]
+collision_layer = 0
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TrapCheck" unique_id=1629373163]
+shape = SubResource("CircleShape2D_qlg0r")
+
+[connection signal="area_entered" from="TrapCheck" to="." method="_on_trap_check_area_entered"]
