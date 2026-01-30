@@ -1,4 +1,4 @@
-class_name Npc
+class_name Entity
 extends CharacterBody2D
 
 var pos: Vector2i
@@ -6,22 +6,7 @@ var pos: Vector2i
 func _ready() -> void:
 	position = pos * Global.tile_size
 
-const directions: Array[Vector2i] = [
-	Vector2i.DOWN,
-	Vector2i.UP,
-	Vector2i.LEFT,
-	Vector2i.RIGHT,
-	Vector2i.ZERO,
-	Vector2i.ZERO,
-	Vector2i.ZERO,
-	Vector2i.ZERO
-]
-
 func _process(delta: float) -> void:
 	var target_position: Vector2 = pos * Global.tile_size
 	var direction: Vector2 = target_position - position
 	position += direction.normalized() * delta * Global.tile_size / (Global.tick_duration/2.0)
-
-func tick(world: World) -> void:
-	var direction: Vector2i = directions.pick_random()
-	pos += direction

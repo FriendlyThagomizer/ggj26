@@ -1,19 +1,21 @@
-extends CharacterBody2D
+class_name Player
+extends Entity
 
 @export var speed: float = 200
-var next_direction = Vector2(0, 0)
+var next_direction: Vector2i = Vector2i(0, 0)
 
-func _unhandled_input(event: InputEvent) -> void:
-	if Input.is_action_just_pressed("north"):
-		next_direction = Vector2.UP
-	elif Input.is_action_just_pressed("west"):
-		next_direction = Vector2.LEFT
-	elif Input.is_action_just_pressed("south"):
-		next_direction = Vector2.DOWN
-	elif Input.is_action_just_pressed("east"):
-		next_direction = Vector2.RIGHT
-	
 
-func _on_tick_timeout() -> void:
-	position += next_direction * Global.tile_size
-	next_direction = Vector2.ZERO
+func _unhandled_input(_event: InputEvent) -> void:
+	if Input.is_action_pressed("north"):
+		next_direction = Vector2i.UP
+	elif Input.is_action_pressed("west"):
+		next_direction = Vector2i.LEFT
+	elif Input.is_action_pressed("south"):
+		next_direction = Vector2i.DOWN
+	elif Input.is_action_pressed("east"):
+		next_direction = Vector2i.RIGHT
+
+func tick(world: World) -> void:
+	#position += next_direction * Global.tile_size
+	pos += next_direction
+	next_direction = Vector2i.ZERO
