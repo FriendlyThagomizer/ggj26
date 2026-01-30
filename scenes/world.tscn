@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://dgp3xal8t7tmy"]
 
 [ext_resource type="PackedScene" uid="uid://d4j24xtuynqto" path="res://scenes/player.tscn" id="1_nnsk1"]
-[ext_resource type="PackedScene" uid="uid://duuw3wspysy3i" path="res://scenes/wall.tscn" id="2_4wyf3"]
-[ext_resource type="PackedScene" uid="uid://pdu7dbqr0apt" path="res://scenes/trap.tscn" id="3_4wyf3"]
+[ext_resource type="Script" uid="uid://36wpvlcfsl7y" path="res://code/npcs.gd" id="2_4wyf3"]
+[ext_resource type="PackedScene" uid="uid://dgk1iiyl4x80o" path="res://scenes/npc.tscn" id="3_4wyf3"]
 
 [node name="World" type="Node2D" unique_id=1699676547]
 
@@ -26,88 +26,14 @@ size_flags_horizontal = 4
 theme_override_font_sizes/font_size = 28
 text = "Lorem Ipsum"
 
-[node name="Maze" type="Node2D" parent="." unique_id=697056525]
+[node name="Tick" type="Timer" parent="." unique_id=1747785831]
+autostart = true
 
-[node name="Wall" parent="Maze" unique_id=1692678082 instance=ExtResource("2_4wyf3")]
-position = Vector2(301, 160)
+[node name="Npcs" type="Node2D" parent="." unique_id=421013328]
+script = ExtResource("2_4wyf3")
 
-[node name="Wall4" parent="Maze" unique_id=1179578193 instance=ExtResource("2_4wyf3")]
-position = Vector2(302, 216)
+[node name="Npc" parent="Npcs" unique_id=792844102 instance=ExtResource("3_4wyf3")]
+position = Vector2(364, 252)
 
-[node name="Wall5" parent="Maze" unique_id=1291913066 instance=ExtResource("2_4wyf3")]
-position = Vector2(532, 286)
-
-[node name="Wall6" parent="Maze" unique_id=419442376 instance=ExtResource("2_4wyf3")]
-position = Vector2(535, 345)
-
-[node name="Wall7" parent="Maze" unique_id=1937434161 instance=ExtResource("2_4wyf3")]
-position = Vector2(544, 394)
-
-[node name="Wall8" parent="Maze" unique_id=1852758727 instance=ExtResource("2_4wyf3")]
-position = Vector2(547, 455)
-
-[node name="Wall9" parent="Maze" unique_id=2022306407 instance=ExtResource("2_4wyf3")]
-position = Vector2(853, 240)
-
-[node name="Wall10" parent="Maze" unique_id=676147696 instance=ExtResource("2_4wyf3")]
-position = Vector2(850, 299)
-
-[node name="Wall11" parent="Maze" unique_id=885542548 instance=ExtResource("2_4wyf3")]
-position = Vector2(854, 359)
-
-[node name="Wall12" parent="Maze" unique_id=40021841 instance=ExtResource("2_4wyf3")]
-position = Vector2(855, 419)
-
-[node name="Wall13" parent="Maze" unique_id=906999449 instance=ExtResource("2_4wyf3")]
-position = Vector2(856, 486)
-
-[node name="Wall14" parent="Maze" unique_id=907458659 instance=ExtResource("2_4wyf3")]
-position = Vector2(1124, 618)
-
-[node name="Wall15" parent="Maze" unique_id=2089335749 instance=ExtResource("2_4wyf3")]
-position = Vector2(17, 22)
-
-[node name="Wall2" parent="Maze" unique_id=844073437 instance=ExtResource("2_4wyf3")]
-position = Vector2(301, 97)
-
-[node name="Wall16" parent="Maze" unique_id=1850005427 instance=ExtResource("2_4wyf3")]
-position = Vector2(1132, 22)
-
-[node name="Wall17" parent="Maze" unique_id=741117725 instance=ExtResource("2_4wyf3")]
-position = Vector2(27, 628)
-
-[node name="Wall3" parent="Maze" unique_id=1546739285 instance=ExtResource("2_4wyf3")]
-position = Vector2(304, 41)
-
-[node name="Trap" parent="Maze" unique_id=1946059478 instance=ExtResource("3_4wyf3")]
-position = Vector2(299, 268)
-
-[node name="Trap2" parent="Maze" unique_id=1410746489 instance=ExtResource("3_4wyf3")]
-position = Vector2(293, 333)
-
-[node name="Trap5" parent="Maze" unique_id=1205082170 instance=ExtResource("3_4wyf3")]
-position = Vector2(293, 392)
-
-[node name="Trap3" parent="Maze" unique_id=1783449318 instance=ExtResource("3_4wyf3")]
-position = Vector2(312, 553)
-
-[node name="Trap4" parent="Maze" unique_id=1828340292 instance=ExtResource("3_4wyf3")]
-position = Vector2(314, 612)
-
-[node name="Trap6" parent="Maze" unique_id=735310580 instance=ExtResource("3_4wyf3")]
-position = Vector2(359, 223)
-
-[node name="Trap7" parent="Maze" unique_id=1680372236 instance=ExtResource("3_4wyf3")]
-position = Vector2(413, 229)
-
-[node name="Trap9" parent="Maze" unique_id=82254993 instance=ExtResource("3_4wyf3")]
-position = Vector2(527, 226)
-
-[node name="Trap10" parent="Maze" unique_id=1071314607 instance=ExtResource("3_4wyf3")]
-position = Vector2(744, 229)
-
-[node name="Trap11" parent="Maze" unique_id=380591218 instance=ExtResource("3_4wyf3")]
-position = Vector2(801, 232)
-
-[node name="Trap8" parent="Maze" unique_id=556239999 instance=ExtResource("3_4wyf3")]
-position = Vector2(465, 227)
+[connection signal="timeout" from="Tick" to="Player" method="_on_tick_timeout"]
+[connection signal="timeout" from="Tick" to="Npcs" method="_on_tick_timeout"]

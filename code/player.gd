@@ -1,25 +1,19 @@
 extends CharacterBody2D
 
 @export var speed: float = 200
+var next_direction = Vector2(0, 0)
 
-func _physics_process(_delta: float) -> void:
-	var d: Vector2 = Input.get_vector("west", "east", "north", "south")
-	velocity = d * speed
-	move_and_slide()
+func _unhandled_input(event: InputEvent) -> void:
+	if Input.is_action_just_pressed("north"):
+		next_direction = Vector2.UP
+	elif Input.is_action_just_pressed("west"):
+		next_direction = Vector2.LEFT
+	elif Input.is_action_just_pressed("south"):
+		next_direction = Vector2.DOWN
+	elif Input.is_action_just_pressed("east"):
+		next_direction = Vector2.RIGHT
 	
-	var should_play_animation: bool = d != Vector2.ZERO
-	if $Animation.is_playing() && !should_play_animation:
-		$Animation.pause()
-	elif !$Animation.is_playing() && should_play_animation:
-		$Animation.play()
-	if d.x < 0:
-		$Animation.flip_h = true
-	elif d.x > 0:
-		$Animation.flip_h = false
 
-func _draw() -> void:
-	draw_circle(Vector2.ZERO, 20, Color.GREEN)
-
-
-func _on_trap_check_area_entered(area: Area2D) -> void:
-	position = $"../Start".position
+func _on_tick_timeout() -> void:
+	position += next_direction * Global.tile_size
+	next_direction = Vector2.ZERO
