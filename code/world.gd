@@ -3,7 +3,7 @@ extends Node2D
 
 var area: Rect2i = Rect2i(0, 0, 28, 20)
 
-var dancers: int = 5
+var dancers: int = 50
 var available: Rect2i = area.grow(-1)
 var occupied: Dictionary[Vector2i, Node2D] = {}
 
