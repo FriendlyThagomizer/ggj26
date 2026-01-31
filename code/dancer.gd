@@ -3,6 +3,7 @@ extends Node2D
 
 var dead: bool = false
 var death_fade: float = 0.0 
+var is_player: bool = false
 
 const npc_directions: Array[Vector2i] = [
 	Vector2i.DOWN,
@@ -45,11 +46,12 @@ func _process(delta: float) -> void:
 			position += direction.normalized() * delta * speed
 	elif death_fade < 1.0:
 		death_fade += delta
-		if controller != "":
+		if is_player:
 			%Skull.visible = true
 			%Skull.modulate.a = death_fade
 			%Mask.modulate.a = 1.0 - death_fade * 0.7
 		$Origin.rotation_degrees = min(death_fade * 5 * 90, 90)
+
 
 func die() -> void:
 	dead = true
@@ -57,6 +59,7 @@ func die() -> void:
 
 func move_direction() -> Vector2i:
 	if Global.mind_directions.has(controller):
+		is_player = true
 		return Global.mind_directions[controller]
 	else:
 		return npc_directions.pick_random()
