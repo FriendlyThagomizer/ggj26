@@ -40,7 +40,7 @@ func place_players() -> void:
 	$Players.add_child(player)
 
 func place_npcs() -> void:
-	for i in 30:
+	for i in 80:
 		var npc: Npc = preload("res://scenes/npc.tscn").instantiate()
 		npc.pos = random_free_pos()
 		occupied[npc.pos] = npc

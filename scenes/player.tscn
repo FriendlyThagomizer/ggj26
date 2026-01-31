@@ -39,6 +39,6 @@ animation = &"walk"
 frame_progress = 0.5798601
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=578790097]
-position = Vector2(16, 16)
-scale = Vector2(0.2, 0.2)
+position = Vector2(64, 64)
+scale = Vector2(0.8, 0.8)
 texture = ExtResource("4_dqkch")

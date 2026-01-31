@@ -13,6 +13,6 @@ position = Vector2(16, 16)
 shape = SubResource("CircleShape2D_nnsk1")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=623725048]
-position = Vector2(16, 16)
-scale = Vector2(0.2, 0.2)
+position = Vector2(64, 64)
+scale = Vector2(0.8, 0.8)
 texture = ExtResource("2_rv78h")
