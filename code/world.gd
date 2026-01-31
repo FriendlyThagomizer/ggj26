@@ -2,7 +2,7 @@ class_name World
 extends Node2D
 
 var area: Rect2i = Rect2i(0, 0, 32, 20)
-var dancers = 10
+var dancers = 50
 var available: Rect2i = area.grow(-1)
 var occupied: Dictionary[Vector2i, Node2D] = {}
 
