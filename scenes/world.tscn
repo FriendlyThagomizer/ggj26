@@ -62,6 +62,8 @@ script = ExtResource("1_71j4m")
 scale = Vector2(4, 4)
 tile_set = SubResource("TileSet_4wyf3")
 
+[node name="Corpses" type="Node2D" parent="." unique_id=1330096347]
+
 [node name="Dancers" type="Node2D" parent="." unique_id=1024980594]
 y_sort_enabled = true
 
@@ -96,8 +98,6 @@ wait_time = 2.0
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=130200965]
 stream = ExtResource("3_4wyf3")
 parameters/looping = true
-
-[node name="Corpses" type="Node2D" parent="." unique_id=1330096347]
 
 [node name="GunSound" type="AudioStreamPlayer" parent="." unique_id=612631972]
 stream = ExtResource("4_k0juu")
