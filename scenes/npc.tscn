@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://dgk1iiyl4x80o"]
+
+[ext_resource type="Script" path="res://code/npc.gd" id="1_abqhh"]
+[ext_resource type="Texture2D" uid="uid://b6na1m2ftk7bg" path="res://art/Characters/Character_base.png" id="2_rv78h"]
+[ext_resource type="Texture2D" uid="uid://c6gjgbkcxk76p" path="res://art/Characters/Masks/Sun_mask_1.png" id="3_7n8xq"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_nnsk1"]
+
+[node name="Npc" type="CharacterBody2D" unique_id=792844102]
+script = ExtResource("1_abqhh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=716733570]
+position = Vector2(16, 16)
+shape = SubResource("CircleShape2D_nnsk1")
+
+[node name="Body" type="Sprite2D" parent="." unique_id=623725048]
+position = Vector2(64, 40)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("2_rv78h")
+metadata/_edit_group_ = true
+
+[node name="Mask" type="Sprite2D" parent="Body" unique_id=981236400]
+scale = Vector2(1.2499999, 1.2499999)
+texture = ExtResource("3_7n8xq")
