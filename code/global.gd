@@ -1,7 +1,7 @@
 extends Node
 
 const tile_size: float = 128
-const tick_duration: float = 2
+const tick_duration: float = 1.5
 
 
 var mind_directions: Dictionary[String, Vector2i] = {}
