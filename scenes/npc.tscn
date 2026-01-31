@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://dgk1iiyl4x80o"]
 
 [ext_resource type="Script" uid="uid://c5cpibx8favi4" path="res://code/npc.gd" id="1_abqhh"]
-[ext_resource type="Texture2D" uid="uid://dr4lesnjvecab" path="res://art/Character_mask1.png" id="2_abqhh"]
+[ext_resource type="Texture2D" uid="uid://dr4lesnjvecab" path="res://art/Characters/Character_sun_mask_1.png" id="2_abqhh"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_nnsk1"]
 

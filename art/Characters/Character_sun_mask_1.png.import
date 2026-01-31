@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dr4lesnjvecab"
-path="res://.godot/imported/Character_mask1.png-8dcc9f05d2efec7820f7e705a447a940.ctex"
+path="res://.godot/imported/Character_sun_mask_1.png-5daa0efcf9a21ecd814e9ab0b45de8ff.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/Character_mask1.png"
-dest_files=["res://.godot/imported/Character_mask1.png-8dcc9f05d2efec7820f7e705a447a940.ctex"]
+source_file="res://art/Characters/Character_sun_mask_1.png"
+dest_files=["res://.godot/imported/Character_sun_mask_1.png-5daa0efcf9a21ecd814e9ab0b45de8ff.ctex"]
 
 [params]
 
