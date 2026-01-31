@@ -32,9 +32,13 @@ func _ready() -> void:
 	$Mask.texture = masks.pick_random()
 
 func _process(delta: float) -> void:
+	var speed: float = Global.tile_size / (Global.tick_duration / 2.0)
 	var target_position: Vector2 = pos * Global.tile_size
 	var direction: Vector2 = target_position - position
-	position += direction.normalized() * delta * Global.tile_size / (Global.tick_duration/2.0)
+	if direction.length() < speed * delta:
+		position = target_position
+	else:
+		position += direction.normalized() * delta * speed
 
 
 func move_direction() -> Vector2i:

@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://54kbomw66u7r"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_4wyf3"]
+font_size = 64
+
+[node name="PlayerUi" type="Control" unique_id=263229470]
+layout_mode = 3
+anchors_preset = 0
+
+[node name="Label" type="Label" parent="." unique_id=224889747]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "Player WASD
+Score 5
+Reloading"
+label_settings = SubResource("LabelSettings_4wyf3")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=849767544]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
