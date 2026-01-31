@@ -3,7 +3,7 @@ extends Node2D
 
 var area: Rect2i = Rect2i(0, 0, 28, 20)
 
-var dancers = 50
+var dancers: int = 5
 var available: Rect2i = area.grow(-1)
 var occupied: Dictionary[Vector2i, Node2D] = {}
 
@@ -47,7 +47,13 @@ func place_dancers() -> void:
 		elif i==1:
 			dancer.controller = "arrows"
 		elif i==2:
+			dancer.controller = "joy0"
+		elif i==3:
 			dancer.controller = "joy1"
+		elif i==4:
+			dancer.controller = "joy2"
+		elif i==5:
+			dancer.controller = "joy3"
 		$Dancers.add_child(dancer)
 
 
