@@ -81,11 +81,9 @@ func _unhandled_input(_event: InputEvent) -> void:
 	for shooter: Dancer in $Dancers.get_children():
 		var dir: Vector2i = shooter.move_direction()
 		var controller: String = shooter.controller
-		#prints("shootdd")
 		if controller != "" and Input.is_action_just_pressed("shoot_" + controller) and dir != Vector2i.ZERO:
 			var p: Vector2i = shooter.pos
 			p += dir
-			prints("shoot")
 			while area.has_point(p):
 				var victim: Dancer = occupied.get(p)
 				if victim is Dancer:

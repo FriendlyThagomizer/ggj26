@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dlkr14t8ix8uk" path="res://code/world.gd" id="1_71j4m"]
 [ext_resource type="Texture2D" uid="uid://di1kapr6of5rq" path="res://art/tiles.png" id="1_k0juu"]
-[ext_resource type="AudioStream" uid="uid://bi148auwbmyun" path="res://Sounds/Music/Music_Loop.MP3" id="3_4wyf3"]
+[ext_resource type="AudioStream" uid="uid://cmo72niim153n" path="res://Sounds/Music/Loop.MP3" id="3_4wyf3"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_71j4m"]
 texture = ExtResource("1_k0juu")
