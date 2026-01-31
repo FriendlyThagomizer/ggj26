@@ -1,25 +1,27 @@
 class_name World
 extends Node2D
 
-var area: Rect2i = Rect2i(0, 0, 40, 25)
+var area: Rect2i = Rect2i(0, 0, 32, 20)
 
 var available: Rect2i = area.grow(-1)
 var occupied: Dictionary[Vector2i, Node2D] = {}
 
 func _ready() -> void:
-	#build_tiles()
+	build_tiles()
 	place_players()
 	place_npcs()
+	$Tick.wait_time = Global.tick_duration
+	$Tick.start()
 
-#func build_tiles() -> void:
-	#$TileMapLayer.clear()
-	#for y: int in range(area.position.y, area.end.y):
-		#for x: int in range(area.position.x, area.end.x):
-			#var pos: Vector2i = Vector2i(x, y)
-			#var tile: Vector2i = Vector2i(0, 0)
-			##if available.has_point(pos):
-				##$TileMapLayer.set_cell(pos, 1, Vector2i(0, 0))
-			##else:
+func build_tiles() -> void:
+	$TileMapLayer.clear()
+	for y: int in range(area.position.y, area.end.y):
+		for x: int in range(area.position.x, area.end.x):
+			var pos: Vector2i = Vector2i(x, y)
+			var tile: Vector2i = Vector2i(0, 0)
+			if !available.has_point(pos):
+				tile = Vector2i(1, 0)
+			$TileMapLayer.set_cell(pos, 1, tile)
 				
 
 

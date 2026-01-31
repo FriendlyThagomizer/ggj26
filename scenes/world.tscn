@@ -43,7 +43,6 @@ text = "Lorem Ipsum"
 
 [node name="Tick" type="Timer" parent="." unique_id=1747785831]
 wait_time = 2.0
-autostart = true
 
 [node name="Npcs" type="Node2D" parent="." unique_id=421013328]
 
