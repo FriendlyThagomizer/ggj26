@@ -47,4 +47,6 @@ wait_time = 2.0
 stream = ExtResource("3_4wyf3")
 parameters/looping = false
 
+[node name="Corpses" type="Node2D" parent="." unique_id=1330096347]
+
 [connection signal="timeout" from="Tick" to="." method="_on_tick_timeout"]

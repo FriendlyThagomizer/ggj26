@@ -74,7 +74,8 @@ func kill(victim: Dancer) -> void:
 				new_dancer.controller = victim.controller
 				break
 		Global.mind_directions.erase(victim.controller)
-	victim.queue_free()
+	victim.reparent($Corpses)
+	victim.rotation_degrees = 90
 
 
 func _unhandled_input(_event: InputEvent) -> void:
