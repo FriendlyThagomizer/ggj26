@@ -12,7 +12,7 @@ const npc_directions: Array[Vector2i] = [
 	Vector2i.ZERO
 ]
 
-var mind = null
+var controller: String = ""
 
 var pos: Vector2i
 
@@ -26,7 +26,7 @@ func _process(delta: float) -> void:
 
 
 func move_direction() -> Vector2i:
-	if mind != null:
-		return mind.move_direction()
+	if Global.mind_directions.has(controller):
+		return Global.mind_directions[controller]
 	else:
 		return npc_directions.pick_random()

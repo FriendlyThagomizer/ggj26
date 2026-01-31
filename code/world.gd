@@ -2,7 +2,7 @@ class_name World
 extends Node2D
 
 var area: Rect2i = Rect2i(0, 0, 32, 20)
-
+var dancers = 10
 var available: Rect2i = area.grow(-1)
 var occupied: Dictionary[Vector2i, Node2D] = {}
 
@@ -36,12 +36,16 @@ func random_free_pos() -> Vector2i:
 
 
 func place_dancers() -> void:
-	for i in 80:
+	for i in dancers:
 		var dancer: Dancer = preload("res://scenes/dancer.tscn").instantiate()
 		dancer.pos = random_free_pos()
 		occupied[dancer.pos] = dancer
 		if i == 0:
-			dancer.mind = ControllerMind.new()
+			dancer.controller = "wasd"
+		elif i==1:
+			dancer.controller = "arrows"
+		elif i==2:
+			dancer.controller = "joy1"
 		$Dancers.add_child(dancer)
 
 
@@ -54,5 +58,8 @@ func move_dancer(dancer: Dancer) -> void:
 	dancer.pos = new_pos
 
 func _on_tick_timeout() -> void:
+	Global.check_inputs()
 	for dancer: Dancer in $Dancers.get_children():
 		move_dancer(dancer)
+	Global.clear_minds()
+		

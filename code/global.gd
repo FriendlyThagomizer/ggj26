@@ -4,18 +4,23 @@ const tile_size: float = 128
 const tick_duration: float = 2
 
 
-var mind_directions: Array[Vector2i] = [Vector2i.ZERO]
+var mind_directions: Dictionary[String, Vector2i] = {}
 
-func _unhandled_input(event: InputEvent) -> void:
+func _unhandled_input(_event: InputEvent) -> void:
 	check_inputs()
 
 
 func check_inputs() -> void:
-	if Input.is_action_pressed("north"):
-		mind_directions[0] = Vector2i.UP
-	elif Input.is_action_pressed("west"):
-		mind_directions[0] = Vector2i.LEFT
-	elif Input.is_action_pressed("south"):
-		mind_directions[0] = Vector2i.DOWN
-	elif Input.is_action_pressed("east"):
-		mind_directions[0] = Vector2i.RIGHT
+	for controller in ["wasd", "arrows", "joy1"]:
+		if Input.is_action_pressed("up_" + controller):
+			mind_directions[controller] = Vector2i.UP
+		elif Input.is_action_pressed("down_" + controller):
+			mind_directions[controller] = Vector2i.DOWN
+		if Input.is_action_pressed("left_" + controller):
+			mind_directions[controller] = Vector2i.LEFT
+		if Input.is_action_pressed("right_" + controller):
+			mind_directions[controller] = Vector2i.RIGHT
+
+func clear_minds() -> void:
+	for controller in mind_directions.keys():
+		mind_directions[controller] = Vector2.ZERO
