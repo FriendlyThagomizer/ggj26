@@ -8,8 +8,7 @@ var occupied: Dictionary[Vector2i, Node2D] = {}
 
 func _ready() -> void:
 	build_tiles()
-	place_players()
-	place_npcs()
+	place_dancers()
 	$Tick.wait_time = Global.tick_duration
 	$Tick.start()
 
@@ -35,35 +34,25 @@ func random_free_pos() -> Vector2i:
 			return pos
 	return Vector2i(-1, -1)
 
-func place_players() -> void:
-	var player: Player = preload("res://scenes/player.tscn").instantiate()
-	player.pos = random_free_pos()
-	occupied[player.pos] = player
-	$Players.add_child(player)
 
-func place_npcs() -> void:
+func place_dancers() -> void:
 	for i in 80:
-		var npc: Npc = preload("res://scenes/npc.tscn").instantiate()
-		npc.pos = random_free_pos()
-		occupied[npc.pos] = npc
-		$Npcs.add_child(npc)
+		var dancer: Dancer = preload("res://scenes/dancer.tscn").instantiate()
+		dancer.pos = random_free_pos()
+		occupied[dancer.pos] = dancer
+		if i == 0:
+			dancer.mind = ControllerMind.new()
+		$Dancers.add_child(dancer)
 
-#func can_move(pos: Vector2i) -> bool:
-	#return available.has_point(pos) && !occupied.has(pos)
 
-func move_entity(entity: Entity) -> void:
-	var new_pos: Vector2i = entity.pos + entity.move_direction()
+func move_dancer(dancer: Dancer) -> void:
+	var new_pos: Vector2i = dancer.pos + dancer.move_direction()
 	if occupied.has(new_pos) || !available.has_point(new_pos):
 		return
-	occupied.erase(entity.pos)
-	occupied[new_pos] = entity
-	entity.pos = new_pos
-	entity.update(new_pos)
+	occupied.erase(dancer.pos)
+	occupied[new_pos] = dancer
+	dancer.pos = new_pos
 
 func _on_tick_timeout() -> void:
-	for player: Player in $Players.get_children():
-		move_entity(player)
-		#player.tick(self)
-	for npc: Npc in $Npcs.get_children():
-		move_entity(npc)
-		#npc.tick(self)
+	for dancer: Dancer in $Dancers.get_children():
+		move_dancer(dancer)

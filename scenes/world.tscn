@@ -22,8 +22,7 @@ script = ExtResource("1_71j4m")
 scale = Vector2(4, 4)
 tile_set = SubResource("TileSet_4wyf3")
 
-[node name="Start" type="Node2D" parent="." unique_id=1381887625]
-position = Vector2(100, 100)
+[node name="Dancers" type="Node2D" parent="." unique_id=1024980594]
 
 [node name="UI" type="CanvasLayer" parent="." unique_id=386769772]
 
@@ -42,9 +41,5 @@ text = "Lorem Ipsum"
 
 [node name="Tick" type="Timer" parent="." unique_id=1747785831]
 wait_time = 2.0
-
-[node name="Npcs" type="Node2D" parent="." unique_id=421013328]
-
-[node name="Players" type="Node2D" parent="." unique_id=255094160]
 
 [connection signal="timeout" from="Tick" to="." method="_on_tick_timeout"]
