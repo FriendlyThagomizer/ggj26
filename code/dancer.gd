@@ -58,8 +58,9 @@ func die() -> void:
 	#rotation_degrees = 90
 
 func move_direction() -> Vector2i:
-	if Global.mind_directions.has(controller):
+	if Global.has_controller(controller):
+	#if Global.mind_directions.has(controller):
 		is_player = true
-		return Global.mind_directions[controller]
+		return Global.move_direction(controller)
 	else:
 		return npc_directions.pick_random()
