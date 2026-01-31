@@ -1,12 +1,18 @@
 [gd_scene format=3 uid="uid://dcb4b1yadi164"]
 
-[ext_resource type="Script" uid="uid://dkrgpcogrshel" path="res://code/dancer.gd" id="1_l4u0v"]
-[ext_resource type="Texture2D" uid="uid://dr4lesnjvecab" path="res://art/Characters/Character_sun_mask_1.png" id="2_sbecm"]
+[ext_resource type="Script" path="res://code/dancer.gd" id="1_l4u0v"]
+[ext_resource type="Texture2D" uid="uid://b6na1m2ftk7bg" path="res://art/Characters/Character_base.png" id="2_2hymp"]
+[ext_resource type="Texture2D" uid="uid://c6gjgbkcxk76p" path="res://art/Characters/Masks/Sun_mask_1.png" id="3_coskt"]
 
 [node name="Dancer" type="Node2D" unique_id=1383689205]
 script = ExtResource("1_l4u0v")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=182932539]
-position = Vector2(64, -16)
-scale = Vector2(0.6, 0.6)
-texture = ExtResource("2_sbecm")
+[node name="Body" type="Sprite2D" parent="." unique_id=1228355553]
+position = Vector2(64, 40)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("2_2hymp")
+metadata/_edit_group_ = true
+
+[node name="Mask" type="Sprite2D" parent="Body" unique_id=1751760009]
+scale = Vector2(1.2499999, 1.2499999)
+texture = ExtResource("3_coskt")
