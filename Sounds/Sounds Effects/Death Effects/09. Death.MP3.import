@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://d0hkvmuilrjvq"
+path="res://.godot/imported/09. Death.MP3-fc86cdba1bed08f58725c276ff921e85.mp3str"
+
+[deps]
+
+source_file="res://Sounds/Sounds Effects/Death Effects/09. Death.MP3"
+dest_files=["res://.godot/imported/09. Death.MP3-fc86cdba1bed08f58725c276ff921e85.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
