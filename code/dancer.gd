@@ -48,7 +48,7 @@ func _process(delta: float) -> void:
 		if controller != "":
 			%Skull.visible = true
 			%Skull.modulate.a = death_fade
-			%Mask.modulate.a = 1.0 - death_fade
+			%Mask.modulate.a = 1.0 - death_fade * 0.7
 		$Origin.rotation_degrees = min(death_fade * 5 * 90, 90)
 
 func die() -> void:
