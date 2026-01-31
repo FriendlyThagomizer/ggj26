@@ -1,7 +1,7 @@
 class_name World
 extends Node2D
 
-var area: Rect2i = Rect2i(0, 0, 20, 15)
+var area: Rect2i = Rect2i(0, 0, 15, 15)
 
 var dancers: int = 30
 var available: Rect2i = area.grow(-1)
@@ -65,7 +65,7 @@ func move_dancer(dancer: Dancer) -> void:
 	dancer.pos = new_pos
 
 func _on_tick_timeout() -> void:
-	Global.check_inputs()
+	check_inputs()
 	for dancer: Dancer in $Dancers.get_children():
 		move_dancer(dancer)
 	Global.clear_minds()
@@ -86,6 +86,8 @@ func kill(victim: Dancer) -> void:
 
 
 func _unhandled_input(_event: InputEvent) -> void:
+	if $Tick.time_left < $Tick.wait_time / 2.0:
+		check_inputs()
 	for shooter: Dancer in $Dancers.get_children():
 		var dir: Vector2i = shooter.move_direction()
 		var controller: String = shooter.controller
@@ -104,3 +106,16 @@ func shoot(shooter: Dancer)->void:
 			kill(victim)
 			break
 		p += dir
+
+
+
+func check_inputs() -> void:
+	for controller in ["wasd", "arrows", "joy0", "joy1", "joy2", "joy3"]:
+		if Input.is_action_pressed("up_" + controller):
+			Global.mind_directions[controller] = Vector2i.UP
+		elif Input.is_action_pressed("down_" + controller):
+			Global.mind_directions[controller] = Vector2i.DOWN
+		if Input.is_action_pressed("left_" + controller):
+			Global.mind_directions[controller] = Vector2i.LEFT
+		if Input.is_action_pressed("right_" + controller):
+			Global.mind_directions[controller] = Vector2i.RIGHT
