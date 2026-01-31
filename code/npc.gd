@@ -1,10 +1,5 @@
 class_name Npc
-extends CharacterBody2D
-
-var pos: Vector2i
-
-func _ready() -> void:
-	position = pos * Global.tile_size
+extends Entity
 
 const directions: Array[Vector2i] = [
 	Vector2i.DOWN,
@@ -17,11 +12,14 @@ const directions: Array[Vector2i] = [
 	Vector2i.ZERO
 ]
 
-func _process(delta: float) -> void:
-	var target_position: Vector2 = pos * Global.tile_size
-	var direction: Vector2 = target_position - position
-	position += direction.normalized() * delta * Global.tile_size / (Global.tick_duration/2.0)
+#func tick(world: World) -> void:
+	#var direction: Vector2i = directions.pick_random()
+	#pos += direction
 
-func tick(world: World) -> void:
-	var direction: Vector2i = directions.pick_random()
-	pos += direction
+
+func move_direction() -> Vector2i:
+	return directions.pick_random()
+
+
+func update(new_pos: Vector2i) -> void:
+	pass

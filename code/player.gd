@@ -15,7 +15,13 @@ func _unhandled_input(_event: InputEvent) -> void:
 	elif Input.is_action_pressed("east"):
 		next_direction = Vector2i.RIGHT
 
-func tick(world: World) -> void:
-	#position += next_direction * Global.tile_size
-	pos += next_direction
-	next_direction = Vector2i.ZERO
+#func tick(world: World) -> void:
+	##position += next_direction * Global.tile_size
+	#pos += next_direction
+	#next_direction = Vector2i.ZERO
+
+func move_direction() -> Vector2i:
+	return next_direction
+
+func update(new_pos: Vector2i) -> void:
+	next_direction = Vector2.ZERO

@@ -38,7 +38,6 @@ func place_players() -> void:
 	player.pos = random_free_pos()
 	occupied[player.pos] = player
 	$Players.add_child(player)
-	#$Tick.timeout.connect(player.tick)
 
 func place_npcs() -> void:
 	for i in 30:
@@ -46,12 +45,23 @@ func place_npcs() -> void:
 		npc.pos = random_free_pos()
 		occupied[npc.pos] = npc
 		$Npcs.add_child(npc)
-		#$Tick.timeout.connect(npc.tick)
-	
 
+#func can_move(pos: Vector2i) -> bool:
+	#return available.has_point(pos) && !occupied.has(pos)
+
+func move_entity(entity: Entity) -> void:
+	var new_pos: Vector2i = entity.pos + entity.move_direction()
+	if occupied.has(new_pos) || !available.has_point(new_pos):
+		return
+	occupied.erase(entity.pos)
+	occupied[new_pos] = entity
+	entity.pos = new_pos
+	entity.update(new_pos)
 
 func _on_tick_timeout() -> void:
 	for player: Player in $Players.get_children():
-		player.tick(self)
+		move_entity(player)
+		#player.tick(self)
 	for npc: Npc in $Npcs.get_children():
-		npc.tick(self)
+		move_entity(npc)
+		#npc.tick(self)

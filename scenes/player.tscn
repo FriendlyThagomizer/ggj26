@@ -24,7 +24,6 @@ animations = [{
 
 [node name="Player" type="CharacterBody2D" unique_id=297528954]
 script = ExtResource("1_dqkch")
-speed = null
 metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=655946298]
