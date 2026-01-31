@@ -3,17 +3,29 @@
 [ext_resource type="Script" uid="uid://dkrgpcogrshel" path="res://code/dancer.gd" id="1_l4u0v"]
 [ext_resource type="Texture2D" uid="uid://b6na1m2ftk7bg" path="res://art/Characters/Character_base.png" id="2_2hymp"]
 [ext_resource type="Texture2D" uid="uid://c6gjgbkcxk76p" path="res://art/Characters/Masks/Sun_mask_1.png" id="3_coskt"]
+[ext_resource type="Texture2D" uid="uid://bl51cqmeisscg" path="res://art/Characters/Masks/Skull_mask_.png" id="4_coskt"]
 
 [node name="Dancer" type="Node2D" unique_id=1383689205]
 y_sort_enabled = true
 script = ExtResource("1_l4u0v")
 
-[node name="Body" type="Sprite2D" parent="." unique_id=1228355553]
-position = Vector2(64, -1.9936124e-09)
+[node name="Origin" type="Node2D" parent="." unique_id=1438171054]
+position = Vector2(64, 64)
+
+[node name="Body" type="Sprite2D" parent="Origin" unique_id=1228355553]
+position = Vector2(0, -64)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("2_2hymp")
 
-[node name="Mask" type="Sprite2D" parent="." unique_id=1751760009]
-position = Vector2(64, 2)
-scale = Vector2(0.65, 0.65)
+[node name="Skull" type="Sprite2D" parent="Origin" unique_id=1489342488]
+unique_name_in_owner = true
+position = Vector2(-1.9936124e-09, -62)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("4_coskt")
+
+[node name="Mask" type="Sprite2D" parent="Origin" unique_id=1751760009]
+unique_name_in_owner = true
+visible = false
+position = Vector2(0, -62)
+scale = Vector2(0.5, 0.5)
 texture = ExtResource("3_coskt")

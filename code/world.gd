@@ -23,7 +23,6 @@ func build_tiles() -> void:
 			if !available.has_point(pos):
 				tile = Vector2i(1, 0)
 			$TileMapLayer.set_cell(pos, 1, tile)
-				
 
 
 func random_pos() -> Vector2i:
@@ -82,8 +81,8 @@ func kill(victim: Dancer) -> void:
 				new_dancer.controller = victim.controller
 				break
 		Global.mind_directions.erase(victim.controller)
+	victim.die()
 	victim.reparent($Corpses)
-	victim.rotation_degrees = 90
 
 
 func _unhandled_input(_event: InputEvent) -> void:
@@ -92,7 +91,8 @@ func _unhandled_input(_event: InputEvent) -> void:
 		var controller: String = shooter.controller
 		if controller != "" and Input.is_action_just_pressed("shoot_" + controller) and dir != Vector2i.ZERO:
 			shoot(shooter)
-			
+
+
 func shoot(shooter: Dancer)->void:
 	$GunSound.play()
 	var dir: Vector2i = shooter.move_direction()

@@ -1,6 +1,9 @@
 class_name Dancer
 extends Node2D
 
+var dead: bool = false
+var death_fade: float = 0.0 
+
 const npc_directions: Array[Vector2i] = [
 	Vector2i.DOWN,
 	Vector2i.UP,
@@ -29,17 +32,28 @@ var pos: Vector2i
 func _ready() -> void:
 	position = pos * Global.tile_size
 	#var masks: PackedS
-	$Mask.texture = masks.pick_random()
+	%Mask.texture = masks.pick_random()
 
 func _process(delta: float) -> void:
-	var speed: float = Global.tile_size / (Global.tick_duration / 2.0)
-	var target_position: Vector2 = pos * Global.tile_size
-	var direction: Vector2 = target_position - position
-	if direction.length() < speed * delta:
-		position = target_position
-	else:
-		position += direction.normalized() * delta * speed
+	if !dead:
+		var speed: float = Global.tile_size / (Global.tick_duration / 2.0)
+		var target_position: Vector2 = pos * Global.tile_size
+		var direction: Vector2 = target_position - position
+		if direction.length() < speed * delta:
+			position = target_position
+		else:
+			position += direction.normalized() * delta * speed
+	elif death_fade < 1.0:
+		death_fade += delta
+		if controller != "":
+			%Skull.visible = true
+			%Skull.modulate.a = death_fade
+			%Mask.modulate.a = 1.0 - death_fade
+		
 
+func die() -> void:
+	dead = true
+	rotation_degrees = 90
 
 func move_direction() -> Vector2i:
 	if Global.mind_directions.has(controller):
