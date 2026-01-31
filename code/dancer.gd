@@ -49,11 +49,11 @@ func _process(delta: float) -> void:
 			%Skull.visible = true
 			%Skull.modulate.a = death_fade
 			%Mask.modulate.a = 1.0 - death_fade
-		
+		$Origin.rotation_degrees = min(death_fade * 5 * 90, 90)
 
 func die() -> void:
 	dead = true
-	rotation_degrees = 90
+	#rotation_degrees = 90
 
 func move_direction() -> Vector2i:
 	if Global.mind_directions.has(controller):
