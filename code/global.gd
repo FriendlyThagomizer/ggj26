@@ -11,7 +11,7 @@ func _unhandled_input(_event: InputEvent) -> void:
 
 
 func check_inputs() -> void:
-	for controller in ["wasd", "arrows", "joy1"]:
+	for controller in ["wasd", "arrows", "joy0", "joy1", "joy2", "joy3"]:
 		if Input.is_action_pressed("up_" + controller):
 			mind_directions[controller] = Vector2i.UP
 		elif Input.is_action_pressed("down_" + controller):
