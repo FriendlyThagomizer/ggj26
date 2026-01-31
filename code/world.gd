@@ -11,6 +11,7 @@ func _ready() -> void:
 	place_dancers()
 	$Tick.wait_time = Global.tick_duration
 	$Tick.start()
+	$AudioStreamPlayer.play()
 
 func build_tiles() -> void:
 	$TileMapLayer.clear()
@@ -62,4 +63,32 @@ func _on_tick_timeout() -> void:
 	for dancer: Dancer in $Dancers.get_children():
 		move_dancer(dancer)
 	Global.clear_minds()
-		
+
+func kill(victim: Dancer) -> void:
+	occupied.erase(victim.pos)
+	if victim.controller != "":
+		var available_dancers: Array = $Dancers.get_children()
+		available_dancers.shuffle()
+		for new_dancer: Dancer in available_dancers:
+			if new_dancer.controller == "":
+				new_dancer.controller = victim.controller
+				break
+		Global.mind_directions.erase(victim.controller)
+	victim.queue_free()
+
+
+func _unhandled_input(_event: InputEvent) -> void:
+	for shooter: Dancer in $Dancers.get_children():
+		var dir: Vector2i = shooter.move_direction()
+		var controller: String = shooter.controller
+		#prints("shootdd")
+		if controller != "" and Input.is_action_just_pressed("shoot_" + controller) and dir != Vector2i.ZERO:
+			var p: Vector2i = shooter.pos
+			p += dir
+			prints("shoot")
+			while area.has_point(p):
+				var victim: Dancer = occupied.get(p)
+				if victim is Dancer:
+					kill(victim)
+					break
+				p += dir
