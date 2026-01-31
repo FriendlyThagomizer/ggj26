@@ -2,6 +2,7 @@ class_name World
 extends Node2D
 
 var area: Rect2i = Rect2i(0, 0, 28, 20)
+
 var dancers = 50
 var available: Rect2i = area.grow(-1)
 var occupied: Dictionary[Vector2i, Node2D] = {}
@@ -66,6 +67,7 @@ func _on_tick_timeout() -> void:
 
 func kill(victim: Dancer) -> void:
 	occupied.erase(victim.pos)
+	$DeathSound.play()
 	if victim.controller != "":
 		var available_dancers: Array = $Dancers.get_children()
 		available_dancers.shuffle()
@@ -83,11 +85,16 @@ func _unhandled_input(_event: InputEvent) -> void:
 		var dir: Vector2i = shooter.move_direction()
 		var controller: String = shooter.controller
 		if controller != "" and Input.is_action_just_pressed("shoot_" + controller) and dir != Vector2i.ZERO:
-			var p: Vector2i = shooter.pos
-			p += dir
-			while area.has_point(p):
-				var victim: Dancer = occupied.get(p)
-				if victim is Dancer:
-					kill(victim)
-					break
-				p += dir
+			shoot(shooter)
+			
+func shoot(shooter: Dancer)->void:
+	$GunSound.play()
+	var dir: Vector2i = shooter.move_direction()
+	var p: Vector2i = shooter.pos
+	p += dir
+	while area.has_point(p):
+		var victim: Dancer = occupied.get(p)
+		if victim is Dancer:
+			kill(victim)
+			break
+		p += dir
