@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://dlkr14t8ix8uk" path="res://code/world.gd" id="1_71j4m"]
 [ext_resource type="Texture2D" uid="uid://ba4irsu25l6lh" path="res://art/Tilemap.png" id="2_oo54l"]
 [ext_resource type="PackedScene" path="res://scenes/player_ui.tscn" id="3_k0juu"]
+[ext_resource type="Texture2D" uid="uid://ynrt70kefb8v" path="res://art/Background.png" id="4_ctatt"]
 [ext_resource type="AudioStream" uid="uid://bwoairluxw5qs" path="res://Sounds/Sounds Effects/Gun.MP3" id="4_k0juu"]
 [ext_resource type="AudioStream" uid="uid://kntbf5l7dn7m" path="res://Sounds/Music/Loop faster.MP3" id="4_oo54l"]
 [ext_resource type="AudioStream" uid="uid://c83cmx3oysd5b" path="res://Sounds/Sounds Effects/Death Effects/02. Death.MP3" id="5_7iits"]
@@ -65,6 +66,11 @@ stream_16/stream = ExtResource("13_37qwj")
 
 [node name="World" type="Node2D" unique_id=1699676547]
 script = ExtResource("1_71j4m")
+
+[node name="Background" type="Sprite2D" parent="." unique_id=36459797]
+position = Vector2(1018, 0)
+texture = ExtResource("4_ctatt")
+centered = false
 
 [node name="FloorLayer" type="TileMapLayer" parent="." unique_id=1910421360]
 tile_set = SubResource("TileSet_4wyf3")
