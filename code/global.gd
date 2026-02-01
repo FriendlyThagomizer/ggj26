@@ -6,8 +6,10 @@ const tick_duration: float = 1.2
 const player_names: Dictionary[String, String] = {
 	"wasd": "Wilma Wasd",
 	"arrows": "Aaron Arrows",
-	"joy1": "Dawnni Dpad",
-	"joy2": "Julia Joystick"
+	"joy0": "Dawnni Dpad",
+	"joy1": "Julia Joystick",
+	"joy2": "James Joystick",
+	"joy3": "John Joystick",
 }
 
 class Mind extends RefCounted:
