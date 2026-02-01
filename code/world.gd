@@ -92,7 +92,6 @@ func move_dancer(dancer: Dancer, new_pos: Vector2i) -> void:
 	dancer.pos = new_pos
 
 func _on_tick_timeout() -> void:
-	prints("pausing", pause_ticks, "restart", should_restart)
 	if pause_ticks > 0:
 		pause_ticks -= 1
 		return
@@ -107,8 +106,6 @@ func _on_tick_timeout() -> void:
 		should_restart = false
 		%GameOver.hide()
 		return
-	#%GameOver.visible = false
-	print("playing")
 	check_inputs()
 	for dancer: Dancer in $Dancers.get_children():
 		update_dancer(dancer)

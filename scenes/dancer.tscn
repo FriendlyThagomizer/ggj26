@@ -14,6 +14,7 @@ script = ExtResource("1_l4u0v")
 position = Vector2(64, 64)
 
 [node name="BloodPool" type="Sprite2D" parent="Origin" unique_id=1394071763]
+unique_name_in_owner = true
 visible = false
 position = Vector2(0, -64)
 scale = Vector2(0.5, 0.5)

@@ -52,14 +52,17 @@ func _process(delta: float) -> void:
 			position += direction.normalized() * delta * speed
 		%Mask.modulate.a = min(1, %Mask.modulate.a + delta / Global.tick_duration)
 		%OldMask.modulate.a = max(0, %OldMask.modulate.a - delta / Global.tick_duration)
-	elif death_fade < 1.0:
+	else:
+		
 		death_fade += delta
 		if is_player:
 			%Skull.visible = true
 			%Skull.modulate.a = death_fade
-			%Mask.modulate.a = 1.0 - death_fade * 0.7
+			%Mask.modulate.a = 1.0 - min(death_fade, 1) * 0.7
 			%OldMask.visible = false
 		$Origin.rotation_degrees = min(death_fade * 5 * 90, 90)
+		%BloodPool.visible = true
+		%BloodPool.modulate.a = clamp(death_fade, 0.3, 1.3)-0.3 
 
 
 func die() -> void:
