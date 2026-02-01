@@ -4,6 +4,7 @@ extends Node2D
 var dead: bool = false
 var death_fade: float = 0.0 
 var is_player: bool = false
+var has_moved: bool = false
 
 const npc_directions: Array[Vector2i] = [
 	Vector2i.DOWN,
@@ -44,6 +45,8 @@ func _process(delta: float) -> void:
 			position = target_position
 		else:
 			position += direction.normalized() * delta * speed
+		%Mask.modulate.a = min(1, %Mask.modulate.a + delta / Global.tick_duration)
+		%OldMask.modulate.a = max(0, %OldMask.modulate.a - delta / Global.tick_duration)
 	elif death_fade < 1.0:
 		death_fade += delta
 		if is_player:
@@ -59,6 +62,16 @@ func die() -> void:
 
 func move_random() -> Vector2i:
 	return npc_directions.pick_random()
+
+func get_mask() -> Texture2D:
+	return %Mask.texture
+
+func change_mask_to(texture: Texture2D):
+	%OldMask.visible = true
+	%OldMask.texture = %Mask.texture
+	%OldMask.modulate.a = 1.0
+	%Mask.texture = texture
+	%Mask.modulate.a = 0.0
 
 #func move_direction() -> Vector2i:
 	#if Global.has_controller(controller):

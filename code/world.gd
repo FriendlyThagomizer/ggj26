@@ -4,7 +4,8 @@ extends Node2D
 var area: Rect2i = Rect2i(0, 0, 15, 15)
 
 var dancers: int = 30
-var kill_range: int = 999
+var switch_chance: float = 0.5
+var kill_range: int = 1
 var available: Rect2i = area.grow(-1)
 var occupied: Dictionary[Vector2i, Node2D] = {}
 
@@ -54,6 +55,9 @@ func place_dancers() -> void:
 	assign_controllers(["wasd", "arrows", "joy0", "joy1", "joy2", "joy3"])
 
 func update_dancer(dancer: Dancer) -> void:
+	if dancer.has_moved:
+		dancer.has_moved = false
+		return
 	var move_direction = dancer.move_random()
 	if Global.has_controller(dancer.controller):
 		dancer.is_player = true
@@ -67,7 +71,19 @@ func update_dancer(dancer: Dancer) -> void:
 		move_dancer(dancer, new_pos)
 	
 func move_dancer(dancer: Dancer, new_pos: Vector2i) -> void:
-	if occupied.has(new_pos) || !available.has_point(new_pos):
+	if !available.has_point(new_pos):
+		return
+	if occupied.has(new_pos):
+		var partner: Dancer = occupied[new_pos]
+		if partner.get_index() > dancer.get_index() && !partner.has_moved && partner.controller == "" && randf() < switch_chance:
+			partner.has_moved = true
+			occupied[partner.pos] = dancer
+			occupied[dancer.pos] = partner
+			partner.pos = dancer.pos
+			dancer.pos = new_pos
+			var partner_mask: Texture2D = partner.get_mask()
+			partner.change_mask_to(dancer.get_mask())
+			dancer.change_mask_to(partner_mask)
 		return
 	occupied.erase(dancer.pos)
 	occupied[new_pos] = dancer
