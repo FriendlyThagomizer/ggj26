@@ -189,8 +189,9 @@ func shoot(shooter: Dancer, direction)->void:
 			break
 		var victim: Dancer = occupied.get(p)
 		if victim is Dancer and victim != shooter:
+			if Global.has_controller(victim.controller):
+				shooter.kills += 1
 			kill(victim)
-			shooter.kills += 1
 			break
 		p += dir
 
