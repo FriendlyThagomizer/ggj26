@@ -105,6 +105,7 @@ func _on_tick_timeout() -> void:
 		place_dancers()
 		should_restart = false
 		%GameOver.hide()
+		get_tree().reload_current_scene()
 		return
 	check_inputs()
 	for dancer: Dancer in $Dancers.get_children():
