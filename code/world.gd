@@ -97,7 +97,15 @@ func _on_tick_timeout() -> void:
 		pause_ticks -= 1
 		return
 	if should_restart:
-		get_tree().reload_current_scene()
+		Global.reset()
+		for dancer: Dancer in $Dancers.get_children():
+			dancer.queue_free()
+		for corpse: Dancer in $Corpses.get_children():
+			corpse.queue_free()
+		occupied = {}
+		place_dancers()
+		should_restart = false
+		%GameOver.hide()
 		return
 	#%GameOver.visible = false
 	print("playing")
@@ -113,6 +121,7 @@ func _on_tick_timeout() -> void:
 func end_round(players: Array[Dancer]) -> void:
 	%GameOver.visible = true
 	pause_ticks = 4
+	should_restart = true
 	
 func living_players() -> Array[Dancer]:
 	var players: Array[Dancer] = []

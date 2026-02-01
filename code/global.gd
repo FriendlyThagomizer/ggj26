@@ -42,3 +42,5 @@ func move_direction(controller: String) -> Vector2i:
 	else:
 		return mind.direction
 	
+func reset() -> void:
+	minds = {}
