@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dlkr14t8ix8uk" path="res://code/world.gd" id="1_71j4m"]
 [ext_resource type="Texture2D" uid="uid://ba4irsu25l6lh" path="res://art/Tilemap.png" id="2_oo54l"]
-[ext_resource type="PackedScene" path="res://scenes/player_ui.tscn" id="3_k0juu"]
+[ext_resource type="PackedScene" uid="uid://54kbomw66u7r" path="res://scenes/player_ui.tscn" id="3_k0juu"]
 [ext_resource type="AudioStream" uid="uid://bwoairluxw5qs" path="res://Sounds/Sounds Effects/Gun.MP3" id="4_k0juu"]
 [ext_resource type="AudioStream" uid="uid://kntbf5l7dn7m" path="res://Sounds/Music/Loop faster.MP3" id="4_oo54l"]
 [ext_resource type="AudioStream" uid="uid://c83cmx3oysd5b" path="res://Sounds/Sounds Effects/Death Effects/02. Death.MP3" id="5_7iits"]
@@ -22,7 +22,7 @@
 [ext_resource type="AudioStream" uid="uid://d0hkvmuilrjvq" path="res://Sounds/Sounds Effects/Death Effects/09. Death.MP3" id="19_f17e3"]
 [ext_resource type="AudioStream" uid="uid://cong8gxkvqiee" path="res://Sounds/Sounds Effects/Death Effects/10. Death.MP3" id="20_x2olw"]
 [ext_resource type="AudioStream" uid="uid://okhwm607a15m" path="res://Sounds/Sounds Effects/Death Effects/11. Death.MP3" id="21_817gm"]
-[ext_resource type="Script" path="res://code/joystick_input.gd" id="23_kpybi"]
+[ext_resource type="Script" uid="uid://bcnlrpjs4gacj" path="res://code/joystick_input.gd" id="23_kpybi"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kpybi"]
 texture = ExtResource("2_oo54l")
@@ -42,6 +42,9 @@ texture_region_size = Vector2i(128, 128)
 [sub_resource type="TileSet" id="TileSet_4wyf3"]
 tile_size = Vector2i(128, 128)
 sources/0 = SubResource("TileSetAtlasSource_kpybi")
+
+[sub_resource type="LabelSettings" id="LabelSettings_kpybi"]
+font_size = 240
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_ggc52"]
 streams_count = 17
@@ -102,7 +105,26 @@ offset_bottom = 212.0
 grow_horizontal = 0
 
 [node name="PlayerUi" parent="UI/VBoxContainer" unique_id=263229470 instance=ExtResource("3_k0juu")]
+visible = false
 layout_mode = 2
+
+[node name="GameOver" type="Control" parent="UI" unique_id=13448863]
+unique_name_in_owner = true
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="GameOverTitle" type="Label" parent="UI/GameOver" unique_id=1062653627]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 619.0
+offset_top = 628.0
+offset_right = 2159.0
+offset_bottom = 1019.0
+text = "Round Ended"
+label_settings = SubResource("LabelSettings_kpybi")
 
 [node name="Tick" type="Timer" parent="." unique_id=1747785831]
 unique_name_in_owner = true

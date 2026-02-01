@@ -8,6 +8,8 @@ var switch_chance: float = 0.5
 var kill_range: int = 1
 var available: Rect2i = area.grow(-1)
 var occupied: Dictionary[Vector2i, Node2D] = {}
+var pause_ticks = 0
+var should_restart: bool = false
 
 func _ready() -> void:
 	build_tiles()
@@ -90,11 +92,35 @@ func move_dancer(dancer: Dancer, new_pos: Vector2i) -> void:
 	dancer.pos = new_pos
 
 func _on_tick_timeout() -> void:
+	prints("pausing", pause_ticks, "restart", should_restart)
+	if pause_ticks > 0:
+		pause_ticks -= 1
+		return
+	if should_restart:
+		get_tree().reload_current_scene()
+		return
+	#%GameOver.visible = false
+	print("playing")
 	check_inputs()
 	for dancer: Dancer in $Dancers.get_children():
 		update_dancer(dancer)
 	Global.clear_minds()
+	var players: Array[Dancer] = living_players()
+	if ($Corpses.get_child_count() > 0 && players.is_empty()) || (players.size() == 1 && players[0].kills > 0):
+		end_round(players)
 	highlight_doubled_rows()
+
+func end_round(players: Array[Dancer]) -> void:
+	%GameOver.visible = true
+	pause_ticks = 4
+	
+func living_players() -> Array[Dancer]:
+	var players: Array[Dancer] = []
+	for dancer: Dancer in $Dancers.get_children():
+		if Global.has_controller(dancer.controller):
+			players.append(dancer)
+	return players
+	
 
 func highlight_doubled_rows():
 	var rows: Dictionary[int, int] = {}
@@ -137,7 +163,7 @@ func kill(victim: Dancer) -> void:
 			occupied.erase(pos)
 	$DeathSound.play()
 	if victim.controller != "":
-		assign_controllers([victim.controller])
+		#assign_controllers([victim.controller])
 		Global.remove_mind(victim.controller)
 	victim.die()
 	victim.reparent($Corpses)
@@ -164,6 +190,7 @@ func shoot(shooter: Dancer, direction)->void:
 		var victim: Dancer = occupied.get(p)
 		if victim is Dancer and victim != shooter:
 			kill(victim)
+			shooter.kills += 1
 			break
 		p += dir
 
@@ -182,7 +209,7 @@ func check_inputs() -> void:
 		if Input.is_action_pressed("shoot_" + controller):
 			Global.plan_shoot(controller)
 		for i in range(4):
-			var joy_vec: Vector2 = Vector2(Input.get_joy_axis(i, 0), Input.get_joy_axis(i, 1))
+			var joy_vec: Vector2 = Vector2(Input.get_joy_axis(i, JOY_AXIS_LEFT_X), Input.get_joy_axis(i, JOY_AXIS_LEFT_Y))
 			if joy_vec.length() > 0.4:
 				if abs(joy_vec.x) > abs(joy_vec.y):
 					Global.plan_direction("joy"+str(i), Vector2i(sign(joy_vec.x), 0))

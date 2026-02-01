@@ -5,6 +5,7 @@ var dead: bool = false
 var death_fade: float = 0.0 
 var is_player: bool = false
 var has_moved: bool = false
+var kills: int = 0
 
 const npc_directions: Array[Vector2i] = [
 	Vector2i.DOWN,
