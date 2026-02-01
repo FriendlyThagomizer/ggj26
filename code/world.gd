@@ -16,14 +16,22 @@ func _ready() -> void:
 	$AudioStreamPlayer.play()
 
 func build_tiles() -> void:
-	$TileMapLayer.clear()
+	#$TileMapLayer.clear()
 	for y: int in range(area.position.y, area.end.y):
 		for x: int in range(area.position.x, area.end.x):
 			var pos: Vector2i = Vector2i(x, y)
-			var tile: Vector2i = Vector2i(0, 0)
-			if !available.has_point(pos):
-				tile = Vector2i(1, 0)
-			$TileMapLayer.set_cell(pos, 0, tile)
+			$FloorLayer.set_cell(pos, 0, [Vector2i(0, 0), Vector2i(0, 1), Vector2i(0, 2)].pick_random())
+			var tile: Vector2i = Vector2i(2, 1)
+			if x == 0:
+				tile.x = 1
+			if x == area.end.x - 1:
+				tile.x = 3
+			if y == 0:
+				tile.y = 0
+			if y == area.end.y-1:
+				tile.y = 2
+			if tile != Vector2i(2, 1):
+				$WallLayer.set_cell(pos, 0, tile)
 
 
 func random_pos() -> Vector2i:
@@ -44,8 +52,6 @@ func place_dancers() -> void:
 		occupied[dancer.pos] = dancer
 		$Dancers.add_child(dancer)
 	assign_controllers(["wasd", "arrows", "joy0", "joy1", "joy2", "joy3"])
-	for dancer in $Dancers.get_children():
-		print(dancer.controller)
 
 func update_dancer(dancer: Dancer) -> void:
 	var move_direction = dancer.move_random()
