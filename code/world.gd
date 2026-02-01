@@ -117,6 +117,10 @@ func _on_tick_timeout() -> void:
 
 func end_round(players: Array[Dancer]) -> void:
 	%GameOver.visible = true
+	if players.is_empty():
+		%WhoWon.text = "All players died"
+	else:
+		%WhoWon.text = Global.player_names[players[0].controller] + " won"
 	pause_ticks = 4
 	should_restart = true
 	

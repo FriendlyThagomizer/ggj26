@@ -4,9 +4,9 @@ const tile_size: float = 128
 const tick_duration: float = 1.2
 
 const player_names: Dictionary[String, String] = {
-	"wasd": "Walter Wasd",
-	"arrows": "Alia Arrows",
-	"joy1": "James Joystick",
+	"wasd": "Wilma Wasd",
+	"arrows": "Aaron Arrows",
+	"joy1": "Dawnni Dpad",
 	"joy2": "Julia Joystick"
 }
 
