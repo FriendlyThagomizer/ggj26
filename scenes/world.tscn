@@ -2,11 +2,11 @@
 
 [ext_resource type="Script" uid="uid://dlkr14t8ix8uk" path="res://code/world.gd" id="1_71j4m"]
 [ext_resource type="Texture2D" uid="uid://ba4irsu25l6lh" path="res://art/Tilemap.png" id="2_oo54l"]
-[ext_resource type="PackedScene" path="res://scenes/player_ui.tscn" id="3_k0juu"]
+[ext_resource type="PackedScene" uid="uid://54kbomw66u7r" path="res://scenes/player_ui.tscn" id="3_k0juu"]
 [ext_resource type="Texture2D" uid="uid://ynrt70kefb8v" path="res://art/Background.png" id="4_ctatt"]
-[ext_resource type="AudioStream" uid="uid://bwoairluxw5qs" path="res://Sounds/Sounds Effects/Gun.MP3" id="4_k0juu"]
 [ext_resource type="AudioStream" uid="uid://kntbf5l7dn7m" path="res://Sounds/Music/Loop faster.MP3" id="4_oo54l"]
 [ext_resource type="AudioStream" uid="uid://c83cmx3oysd5b" path="res://Sounds/Sounds Effects/Death Effects/02. Death.MP3" id="5_7iits"]
+[ext_resource type="AudioStream" uid="uid://bav4eindbyhb2" path="res://Sounds/Sounds Effects/stab.mp3" id="6_ctatt"]
 [ext_resource type="AudioStream" uid="uid://doh7vc3psi3cn" path="res://Sounds/Sounds Effects/Death Effects/03. Death.MP3" id="6_oo54l"]
 [ext_resource type="AudioStream" uid="uid://0j7vkunkpab6" path="res://Sounds/Sounds Effects/Death Effects/12. Death.MP3" id="7_kpybi"]
 [ext_resource type="AudioStream" uid="uid://c61er4v6wueb8" path="res://Sounds/Sounds Effects/Death Effects/13. Death.MP3" id="8_ctatt"]
@@ -23,7 +23,7 @@
 [ext_resource type="AudioStream" uid="uid://d0hkvmuilrjvq" path="res://Sounds/Sounds Effects/Death Effects/09. Death.MP3" id="19_f17e3"]
 [ext_resource type="AudioStream" uid="uid://cong8gxkvqiee" path="res://Sounds/Sounds Effects/Death Effects/10. Death.MP3" id="20_x2olw"]
 [ext_resource type="AudioStream" uid="uid://okhwm607a15m" path="res://Sounds/Sounds Effects/Death Effects/11. Death.MP3" id="21_817gm"]
-[ext_resource type="Script" path="res://code/joystick_input.gd" id="23_kpybi"]
+[ext_resource type="Script" uid="uid://bcnlrpjs4gacj" path="res://code/joystick_input.gd" id="23_kpybi"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kpybi"]
 texture = ExtResource("2_oo54l")
@@ -119,8 +119,8 @@ stream = ExtResource("4_oo54l")
 parameters/looping = true
 
 [node name="GunSound" type="AudioStreamPlayer" parent="." unique_id=612631972]
-stream = ExtResource("4_k0juu")
-volume_db = -2.0
+stream = ExtResource("6_ctatt")
+volume_db = 3.127
 max_polyphony = 3
 
 [node name="DeathSound" type="AudioStreamPlayer" parent="." unique_id=609792617]
