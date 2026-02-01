@@ -131,7 +131,10 @@ func assign_controllers(controllers: Array[String]) -> void:
 			return
 
 func kill(victim: Dancer) -> void:
-	occupied.erase(victim.pos)
+	#occupied.erase(victim.pos)
+	for pos in occupied.keys():
+		if occupied[pos] == victim:
+			occupied.erase(pos)
 	$DeathSound.play()
 	if victim.controller != "":
 		assign_controllers([victim.controller])
@@ -141,7 +144,7 @@ func kill(victim: Dancer) -> void:
 
 
 func _unhandled_input(_event: InputEvent) -> void:
-	if $Tick.time_left < $Tick.wait_time / 2.0:
+	if %Tick.time_left < %Tick.wait_time / 2.0:
 		check_inputs()
 	#for shooter: Dancer in $Dancers.get_children():
 		#var dir: Vector2i = shooter.move_direction()
@@ -159,7 +162,7 @@ func shoot(shooter: Dancer, direction)->void:
 		if !area.has_point(p):
 			break
 		var victim: Dancer = occupied.get(p)
-		if victim is Dancer:
+		if victim is Dancer and victim != shooter:
 			kill(victim)
 			break
 		p += dir
@@ -178,3 +181,10 @@ func check_inputs() -> void:
 			Global.plan_direction(controller, Vector2i.RIGHT)
 		if Input.is_action_pressed("shoot_" + controller):
 			Global.plan_shoot(controller)
+		for i in range(4):
+			var joy_vec: Vector2 = Vector2(Input.get_joy_axis(i, 0), Input.get_joy_axis(i, 1))
+			if joy_vec.length() > 0.4:
+				if abs(joy_vec.x) > abs(joy_vec.y):
+					Global.plan_direction("joy"+str(i), Vector2i(sign(joy_vec.x), 0))
+				else:
+					Global.plan_direction("joy"+str(i), Vector2i(0, sign(joy_vec.y)))

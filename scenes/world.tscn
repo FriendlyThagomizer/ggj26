@@ -22,6 +22,7 @@
 [ext_resource type="AudioStream" uid="uid://d0hkvmuilrjvq" path="res://Sounds/Sounds Effects/Death Effects/09. Death.MP3" id="19_f17e3"]
 [ext_resource type="AudioStream" uid="uid://cong8gxkvqiee" path="res://Sounds/Sounds Effects/Death Effects/10. Death.MP3" id="20_x2olw"]
 [ext_resource type="AudioStream" uid="uid://okhwm607a15m" path="res://Sounds/Sounds Effects/Death Effects/11. Death.MP3" id="21_817gm"]
+[ext_resource type="Script" uid="uid://bcnlrpjs4gacj" path="res://code/joystick_input.gd" id="23_kpybi"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kpybi"]
 texture = ExtResource("2_oo54l")
@@ -104,6 +105,7 @@ grow_horizontal = 0
 layout_mode = 2
 
 [node name="Tick" type="Timer" parent="." unique_id=1747785831]
+unique_name_in_owner = true
 wait_time = 2.0
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=130200965]
@@ -118,5 +120,8 @@ max_polyphony = 3
 [node name="DeathSound" type="AudioStreamPlayer" parent="." unique_id=609792617]
 stream = SubResource("AudioStreamRandomizer_ggc52")
 max_polyphony = 4
+
+[node name="JoystickInput" type="Node" parent="." unique_id=1750012610]
+script = ExtResource("23_kpybi")
 
 [connection signal="timeout" from="Tick" to="." method="_on_tick_timeout"]
