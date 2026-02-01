@@ -25,6 +25,10 @@ static var masks: Array[Resource] = [
 	preload("res://art/Characters/Masks/Sun_mask_2.png"),
 	preload("res://art/Characters/Masks/Sun_mask_3.png"),
 	preload("res://art/Characters/Masks/Sun_mask_4.png"),
+	preload("res://art/Characters/Masks/Star_mask_1.png"),
+	preload("res://art/Characters/Masks/Star_mask_2.png"),
+	preload("res://art/Characters/Masks/Star_mask_3.png"),
+	preload("res://art/Characters/Masks/Star_mask_4.png"),
 ]
 
 var controller: String = ""

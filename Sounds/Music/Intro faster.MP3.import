@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://vfrsd1uutm51"
+path="res://.godot/imported/Intro faster.MP3-fbd857163ab7032348a5e746e95bc925.mp3str"
+
+[deps]
+
+source_file="res://Sounds/Music/Intro faster.MP3"
+dest_files=["res://.godot/imported/Intro faster.MP3-fbd857163ab7032348a5e746e95bc925.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
