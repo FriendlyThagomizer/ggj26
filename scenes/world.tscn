@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dlkr14t8ix8uk" path="res://code/world.gd" id="1_71j4m"]
 [ext_resource type="Texture2D" uid="uid://ba4irsu25l6lh" path="res://art/Tilemap.png" id="2_oo54l"]
-[ext_resource type="PackedScene" path="res://scenes/player_ui.tscn" id="3_k0juu"]
+[ext_resource type="PackedScene" uid="uid://54kbomw66u7r" path="res://scenes/player_ui.tscn" id="3_k0juu"]
 [ext_resource type="Texture2D" uid="uid://dpsujbc53bo1w" path="res://art/UI Controls/Controls_controller.png" id="3_xgqkh"]
 [ext_resource type="Texture2D" uid="uid://ynrt70kefb8v" path="res://art/Background.png" id="4_ctatt"]
 [ext_resource type="AudioStream" uid="uid://kntbf5l7dn7m" path="res://Sounds/Music/Loop faster.MP3" id="4_oo54l"]
@@ -28,7 +28,7 @@
 [ext_resource type="AudioStream" uid="uid://d0hkvmuilrjvq" path="res://Sounds/Sounds Effects/Death Effects/09. Death.MP3" id="19_f17e3"]
 [ext_resource type="AudioStream" uid="uid://cong8gxkvqiee" path="res://Sounds/Sounds Effects/Death Effects/10. Death.MP3" id="20_x2olw"]
 [ext_resource type="AudioStream" uid="uid://okhwm607a15m" path="res://Sounds/Sounds Effects/Death Effects/11. Death.MP3" id="21_817gm"]
-[ext_resource type="Script" path="res://code/joystick_input.gd" id="23_kpybi"]
+[ext_resource type="Script" uid="uid://bcnlrpjs4gacj" path="res://code/joystick_input.gd" id="23_kpybi"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kpybi"]
 texture = ExtResource("2_oo54l")
