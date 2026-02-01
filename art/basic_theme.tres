@@ -1,0 +1,7 @@
+[gd_resource type="Theme" format=3 uid="uid://dgouhs47joghg"]
+
+[ext_resource type="FontFile" uid="uid://d3tsiondhjvds" path="res://Fonts/SITKAVF-ITALIC.TTF" id="1_6k5nf"]
+
+[resource]
+default_base_scale = 56.0
+default_font = ExtResource("1_6k5nf")
