@@ -2,9 +2,9 @@
 
 [ext_resource type="Script" uid="uid://dlkr14t8ix8uk" path="res://code/world.gd" id="1_71j4m"]
 [ext_resource type="Texture2D" uid="uid://ba4irsu25l6lh" path="res://art/Tilemap.png" id="2_oo54l"]
-[ext_resource type="AudioStream" uid="uid://cmo72niim153n" path="res://Sounds/Music/Loop.MP3" id="3_4wyf3"]
-[ext_resource type="PackedScene" path="res://scenes/player_ui.tscn" id="3_k0juu"]
+[ext_resource type="PackedScene" uid="uid://54kbomw66u7r" path="res://scenes/player_ui.tscn" id="3_k0juu"]
 [ext_resource type="AudioStream" uid="uid://bwoairluxw5qs" path="res://Sounds/Sounds Effects/Gun.MP3" id="4_k0juu"]
+[ext_resource type="AudioStream" uid="uid://kntbf5l7dn7m" path="res://Sounds/Music/Loop faster.MP3" id="4_oo54l"]
 [ext_resource type="AudioStream" uid="uid://c83cmx3oysd5b" path="res://Sounds/Sounds Effects/Death Effects/02. Death.MP3" id="5_7iits"]
 [ext_resource type="AudioStream" uid="uid://doh7vc3psi3cn" path="res://Sounds/Sounds Effects/Death Effects/03. Death.MP3" id="6_oo54l"]
 [ext_resource type="AudioStream" uid="uid://0j7vkunkpab6" path="res://Sounds/Sounds Effects/Death Effects/12. Death.MP3" id="7_kpybi"]
@@ -107,7 +107,7 @@ layout_mode = 2
 wait_time = 2.0
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=130200965]
-stream = ExtResource("3_4wyf3")
+stream = ExtResource("4_oo54l")
 parameters/looping = true
 
 [node name="GunSound" type="AudioStreamPlayer" parent="." unique_id=612631972]
