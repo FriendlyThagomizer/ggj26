@@ -12,6 +12,7 @@
 [ext_resource type="AudioStream" uid="uid://bav4eindbyhb2" path="res://Sounds/Sounds Effects/stab.mp3" id="6_ctatt"]
 [ext_resource type="AudioStream" uid="uid://doh7vc3psi3cn" path="res://Sounds/Sounds Effects/Death Effects/03. Death.MP3" id="6_oo54l"]
 [ext_resource type="FontFile" uid="uid://dnjlkeod63pkl" path="res://Fonts/SITKAVF.TTF" id="7_0nbtd"]
+[ext_resource type="Theme" uid="uid://dgouhs47joghg" path="res://art/basic_theme.tres" id="7_37qwj"]
 [ext_resource type="AudioStream" uid="uid://0j7vkunkpab6" path="res://Sounds/Sounds Effects/Death Effects/12. Death.MP3" id="7_kpybi"]
 [ext_resource type="AudioStream" uid="uid://c61er4v6wueb8" path="res://Sounds/Sounds Effects/Death Effects/13. Death.MP3" id="8_ctatt"]
 [ext_resource type="AudioStream" uid="uid://cj67gslw8sxcx" path="res://Sounds/Sounds Effects/Death Effects/14. Death.MP3" id="9_xgqkh"]
@@ -91,7 +92,7 @@ texture = ExtResource("4_ctatt")
 centered = false
 
 [node name="ControlsController" type="Sprite2D" parent="Background" unique_id=259408433]
-position = Vector2(1205, 232)
+position = Vector2(1205, 235.00002)
 scale = Vector2(0.55762154, 0.55762154)
 texture = ExtResource("3_xgqkh")
 
@@ -106,7 +107,7 @@ scale = Vector2(0.55762154, 0.55762154)
 texture = ExtResource("4_ts3gi")
 
 [node name="ControlsArrows" type="Sprite2D" parent="Background" unique_id=867119996]
-position = Vector2(1205, 1339)
+position = Vector2(1205, 1427)
 scale = Vector2(0.55762154, 0.55762154)
 texture = ExtResource("5_0nbtd")
 
@@ -129,14 +130,16 @@ y_sort_enabled = true
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -513.0
+offset_left = -507.0
 offset_top = 449.0
-offset_right = -331.0
-offset_bottom = 488.0
+offset_right = -159.0
+offset_bottom = 506.0
 grow_horizontal = 0
-size_flags_horizontal = 4
+size_flags_horizontal = 0
+size_flags_vertical = 1
+theme = ExtResource("7_37qwj")
 theme_override_colors/font_color = Color(0.8039216, 0.7294118, 0.57254905, 1)
-theme_override_font_sizes/font_size = 28
+theme_override_font_sizes/font_size = 56
 text = "Dawnni Dpad"
 
 [node name="JuliaJoystick" type="Label" parent="UI" unique_id=1905197683]
@@ -148,7 +151,9 @@ offset_top = 57.0
 offset_right = -167.0
 offset_bottom = 114.0
 grow_horizontal = 0
-size_flags_horizontal = 4
+size_flags_horizontal = 0
+size_flags_vertical = 1
+theme = ExtResource("7_37qwj")
 theme_override_colors/font_color = Color(0.8039216, 0.7294118, 0.57254905, 1)
 theme_override_colors/font_shadow_color = Color(0.16291156, 0.028794147, 0.06426168, 0.8392157)
 theme_override_fonts/font = ExtResource("7_0nbtd")
@@ -159,28 +164,32 @@ text = "Julia Joystick"
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -513.0
+offset_left = -507.0
 offset_top = 803.0
-offset_right = -331.0
-offset_bottom = 842.0
+offset_right = -151.0
+offset_bottom = 860.0
 grow_horizontal = 0
-size_flags_horizontal = 4
+size_flags_horizontal = 0
+size_flags_vertical = 1
+theme = ExtResource("7_37qwj")
 theme_override_colors/font_color = Color(0.8039216, 0.7294118, 0.57254905, 1)
-theme_override_font_sizes/font_size = 28
+theme_override_font_sizes/font_size = 56
 text = "Wilma Wazzd"
 
 [node name="AaronArowkey" type="Label" parent="UI" unique_id=1100423125]
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -513.0
-offset_top = 1173.0
-offset_right = -306.0
-offset_bottom = 1212.0
+offset_left = -507.0
+offset_top = 1213.0
+offset_right = -114.0
+offset_bottom = 1270.0
 grow_horizontal = 0
-size_flags_horizontal = 4
+size_flags_horizontal = 0
+size_flags_vertical = 1
+theme = ExtResource("7_37qwj")
 theme_override_colors/font_color = Color(0.8039216, 0.7294118, 0.57254905, 1)
-theme_override_font_sizes/font_size = 28
+theme_override_font_sizes/font_size = 56
 text = "Aaron Arowkey"
 
 [node name="VBoxContainer" type="VBoxContainer" parent="UI" unique_id=1057517135]
