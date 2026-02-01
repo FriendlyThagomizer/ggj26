@@ -161,6 +161,8 @@ func assign_controllers(controllers: Array[String]) -> void:
 			$Dancers.move_child(new_dancer, 0)
 		if controllers.is_empty():
 			return
+	if !controllers.is_empty():
+		print("can't assign all")
 
 func kill(victim: Dancer) -> void:
 	#occupied.erase(victim.pos)

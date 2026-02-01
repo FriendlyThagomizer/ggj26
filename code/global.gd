@@ -3,6 +3,12 @@ extends Node
 const tile_size: float = 128
 const tick_duration: float = 1.2
 
+const player_names: Dictionary[String, String] = {
+	"wasd": "Walter Wasd",
+	"arrows": "Alia Arrows",
+	"joy1": "James Joystick",
+	"joy2": "Julia Joystick"
+}
 
 class Mind extends RefCounted:
 	var direction: Vector2i = Vector2.ZERO
