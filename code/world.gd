@@ -55,8 +55,6 @@ func place_dancers() -> void:
 	assign_controllers(["wasd", "arrows", "joy0", "joy1", "joy2", "joy3"])
 
 func update_dancer(dancer: Dancer) -> void:
-	if dancer.dead:
-		return
 	if dancer.has_moved:
 		dancer.has_moved = false
 		return
@@ -68,7 +66,7 @@ func update_dancer(dancer: Dancer) -> void:
 		if mind.shoot:
 			move_direction = Vector2i.ZERO
 			shoot(dancer, mind.direction)
-	if move_direction != Vector2i.ZERO:
+	if move_direction != Vector2i.ZERO && !dancer.dead:
 		var new_pos: Vector2i = dancer.pos + move_direction
 		move_dancer(dancer, new_pos)
 	
