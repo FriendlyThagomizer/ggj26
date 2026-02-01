@@ -2,9 +2,12 @@
 
 [ext_resource type="Script" uid="uid://dlkr14t8ix8uk" path="res://code/world.gd" id="1_71j4m"]
 [ext_resource type="Texture2D" uid="uid://ba4irsu25l6lh" path="res://art/Tilemap.png" id="2_oo54l"]
-[ext_resource type="PackedScene" uid="uid://54kbomw66u7r" path="res://scenes/player_ui.tscn" id="3_k0juu"]
+[ext_resource type="PackedScene" path="res://scenes/player_ui.tscn" id="3_k0juu"]
+[ext_resource type="Texture2D" uid="uid://dpsujbc53bo1w" path="res://art/UI Controls/Controls_controller.png" id="3_xgqkh"]
 [ext_resource type="Texture2D" uid="uid://ynrt70kefb8v" path="res://art/Background.png" id="4_ctatt"]
 [ext_resource type="AudioStream" uid="uid://kntbf5l7dn7m" path="res://Sounds/Music/Loop faster.MP3" id="4_oo54l"]
+[ext_resource type="Texture2D" uid="uid://b7ho2ue6h64r2" path="res://art/UI Controls/Controls_WASD.png" id="4_ts3gi"]
+[ext_resource type="Texture2D" uid="uid://kv12iud6w16y" path="res://art/UI Controls/Controls_arrows.png" id="5_0nbtd"]
 [ext_resource type="AudioStream" uid="uid://c83cmx3oysd5b" path="res://Sounds/Sounds Effects/Death Effects/02. Death.MP3" id="5_7iits"]
 [ext_resource type="AudioStream" uid="uid://bav4eindbyhb2" path="res://Sounds/Sounds Effects/stab.mp3" id="6_ctatt"]
 [ext_resource type="AudioStream" uid="uid://doh7vc3psi3cn" path="res://Sounds/Sounds Effects/Death Effects/03. Death.MP3" id="6_oo54l"]
@@ -23,7 +26,7 @@
 [ext_resource type="AudioStream" uid="uid://d0hkvmuilrjvq" path="res://Sounds/Sounds Effects/Death Effects/09. Death.MP3" id="19_f17e3"]
 [ext_resource type="AudioStream" uid="uid://cong8gxkvqiee" path="res://Sounds/Sounds Effects/Death Effects/10. Death.MP3" id="20_x2olw"]
 [ext_resource type="AudioStream" uid="uid://okhwm607a15m" path="res://Sounds/Sounds Effects/Death Effects/11. Death.MP3" id="21_817gm"]
-[ext_resource type="Script" uid="uid://bcnlrpjs4gacj" path="res://code/joystick_input.gd" id="23_kpybi"]
+[ext_resource type="Script" path="res://code/joystick_input.gd" id="23_kpybi"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kpybi"]
 texture = ExtResource("2_oo54l")
@@ -76,6 +79,21 @@ script = ExtResource("1_71j4m")
 position = Vector2(1018, 0)
 texture = ExtResource("4_ctatt")
 centered = false
+
+[node name="ControlsController" type="Sprite2D" parent="Background" unique_id=259408433]
+position = Vector2(1205, 299)
+scale = Vector2(0.55762154, 0.55762154)
+texture = ExtResource("3_xgqkh")
+
+[node name="ControlsWASD" type="Sprite2D" parent="Background" unique_id=1394301426]
+position = Vector2(1205, 584)
+scale = Vector2(0.55762154, 0.55762154)
+texture = ExtResource("4_ts3gi")
+
+[node name="ControlsArrows" type="Sprite2D" parent="Background" unique_id=867119996]
+position = Vector2(1205, 890)
+scale = Vector2(0.55762154, 0.55762154)
+texture = ExtResource("5_0nbtd")
 
 [node name="FloorLayer" type="TileMapLayer" parent="." unique_id=1910421360]
 tile_set = SubResource("TileSet_4wyf3")
