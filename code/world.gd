@@ -23,7 +23,7 @@ func build_tiles() -> void:
 			var tile: Vector2i = Vector2i(0, 0)
 			if !available.has_point(pos):
 				tile = Vector2i(1, 0)
-			$TileMapLayer.set_cell(pos, 1, tile)
+			$TileMapLayer.set_cell(pos, 0, tile)
 
 
 func random_pos() -> Vector2i:
