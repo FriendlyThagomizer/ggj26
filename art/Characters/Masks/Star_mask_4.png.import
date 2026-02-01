@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c61x10kcilhfx"
-path="res://.godot/imported/Character_star_mask_1.png-10c21c3818f79c325caf00008f9f1f61.ctex"
+uid="uid://dhl0y6gb6ix8"
+path="res://.godot/imported/Star_mask_4.png-bd338c26b157aea0d551209636263c8f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/Characters/Masks/Character_star_mask_1.png"
-dest_files=["res://.godot/imported/Character_star_mask_1.png-10c21c3818f79c325caf00008f9f1f61.ctex"]
+source_file="res://art/Characters/Masks/Star_mask_4.png"
+dest_files=["res://.godot/imported/Star_mask_4.png-bd338c26b157aea0d551209636263c8f.ctex"]
 
 [params]
 
