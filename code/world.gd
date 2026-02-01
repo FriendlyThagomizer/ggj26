@@ -3,7 +3,7 @@ extends Node2D
 
 var area: Rect2i = Rect2i(0, 0, 15, 15)
 
-var dancers: int = 25
+var dancers: int = 30
 var kill_range: int = 999
 var available: Rect2i = area.grow(-1)
 var occupied: Dictionary[Vector2i, Node2D] = {}
@@ -78,6 +78,29 @@ func _on_tick_timeout() -> void:
 	for dancer: Dancer in $Dancers.get_children():
 		update_dancer(dancer)
 	Global.clear_minds()
+	highlight_doubled_rows()
+
+func highlight_doubled_rows():
+	var rows: Dictionary[int, int] = {}
+	var columns: Dictionary[int, int] = {}
+	for dancer: Dancer in $Dancers.get_children():
+		if Global.has_controller(dancer.controller):
+			rows[dancer.pos.y] = rows.get(dancer.pos.y, 0) + 1
+			columns[dancer.pos.x] = columns.get(dancer.pos.x, 0) + 1
+	for y: int in rows.keys():
+		if rows[y] >= 2:
+			for x in range(available.position.x, available.end.x):
+				highlight(Vector2i(x, y))
+	for x: int in columns.keys():
+		if columns[x] >= 2:
+			for y in range(available.position.y, available.end.y):
+				highlight(Vector2i(x, y))
+	#highlight(Vector2i(randi_range(1, 10), randi_range(1, 10)))
+
+func highlight(pos: Vector2i) -> void:
+	var hl: Node2D = preload("res://scenes/highlight.tscn").instantiate()
+	hl.position = pos * Global.tile_size
+	$Highlights.add_child(hl)
 
 func assign_controllers(controllers: Array[String]) -> void:
 	if controllers.is_empty():
@@ -131,7 +154,7 @@ func check_inputs() -> void:
 	for controller in ["wasd", "arrows", "joy0", "joy1", "joy2", "joy3"]:
 		if Input.is_action_pressed("up_" + controller):
 			Global.plan_direction(controller, Vector2i.UP)
-		elif Input.is_action_pressed("down_" + controller):
+		if Input.is_action_pressed("down_" + controller):
 			Global.plan_direction(controller, Vector2i.DOWN)
 		if Input.is_action_pressed("left_" + controller):
 			Global.plan_direction(controller, Vector2i.LEFT)

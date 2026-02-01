@@ -71,6 +71,8 @@ tile_set = SubResource("TileSet_4wyf3")
 [node name="WallLayer" type="TileMapLayer" parent="." unique_id=885077356]
 tile_set = SubResource("TileSet_4wyf3")
 
+[node name="Highlights" type="Node2D" parent="." unique_id=1686892630]
+
 [node name="Corpses" type="Node2D" parent="." unique_id=1330096347]
 
 [node name="Dancers" type="Node2D" parent="." unique_id=1024980594]

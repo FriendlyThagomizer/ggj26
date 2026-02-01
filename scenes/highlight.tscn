@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://cxy45kp5q1iv"]
+
+[ext_resource type="Texture2D" uid="uid://bdtdsipacxyfy" path="res://art/highlight.png" id="1_gxlip"]
+[ext_resource type="Script" uid="uid://ddfi2awkhvjv1" path="res://code/highlight.gd" id="1_mffkr"]
+
+[node name="Highlight" type="Node2D" unique_id=1218776485]
+script = ExtResource("1_mffkr")
+
+[node name="Sprite" type="Sprite2D" parent="." unique_id=1430477503]
+visible = false
+position = Vector2(64, 64)
+texture = ExtResource("1_gxlip")
