@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dkrgpcogrshel" path="res://code/dancer.gd" id="1_l4u0v"]
 [ext_resource type="Texture2D" uid="uid://b6na1m2ftk7bg" path="res://art/Characters/Character_base.png" id="2_2hymp"]
+[ext_resource type="Texture2D" uid="uid://dgh477o3fi5n3" path="res://art/Characters/Blood_pool.png" id="2_up8c3"]
 [ext_resource type="Texture2D" uid="uid://c6gjgbkcxk76p" path="res://art/Characters/Masks/Sun_mask_1.png" id="3_coskt"]
 [ext_resource type="Texture2D" uid="uid://bl51cqmeisscg" path="res://art/Characters/Masks/Skull_mask_.png" id="4_coskt"]
 
@@ -11,6 +12,12 @@ script = ExtResource("1_l4u0v")
 
 [node name="Origin" type="Node2D" parent="." unique_id=1438171054]
 position = Vector2(64, 64)
+
+[node name="BloodPool" type="Sprite2D" parent="Origin" unique_id=1394071763]
+visible = false
+position = Vector2(0, -64)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_up8c3")
 
 [node name="Body" type="Sprite2D" parent="Origin" unique_id=1228355553]
 position = Vector2(0, -64)
