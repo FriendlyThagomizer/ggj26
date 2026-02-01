@@ -3,7 +3,7 @@ extends Node2D
 
 var area: Rect2i = Rect2i(0, 0, 15, 15)
 
-var dancers: int = 30
+var dancers: int = 25
 var kill_range: int = 999
 var available: Rect2i = area.grow(-1)
 var occupied: Dictionary[Vector2i, Node2D] = {}
@@ -44,10 +44,23 @@ func place_dancers() -> void:
 		occupied[dancer.pos] = dancer
 		$Dancers.add_child(dancer)
 	assign_controllers(["wasd", "arrows", "joy0", "joy1", "joy2", "joy3"])
+	for dancer in $Dancers.get_children():
+		print(dancer.controller)
 
-
-func move_dancer(dancer: Dancer) -> void:
-	var new_pos: Vector2i = dancer.pos + dancer.move_direction()
+func update_dancer(dancer: Dancer) -> void:
+	var move_direction = dancer.move_random()
+	if Global.has_controller(dancer.controller):
+		dancer.is_player = true
+		var mind: Global.Mind = Global.minds[dancer.controller]
+		move_direction = Global.move_direction(dancer.controller)
+		if mind.shoot:
+			move_direction = Vector2i.ZERO
+			shoot(dancer, mind.direction)
+	if move_direction != Vector2i.ZERO:
+		var new_pos: Vector2i = dancer.pos + move_direction
+		move_dancer(dancer, new_pos)
+	
+func move_dancer(dancer: Dancer, new_pos: Vector2i) -> void:
 	if occupied.has(new_pos) || !available.has_point(new_pos):
 		return
 	occupied.erase(dancer.pos)
@@ -57,7 +70,7 @@ func move_dancer(dancer: Dancer) -> void:
 func _on_tick_timeout() -> void:
 	check_inputs()
 	for dancer: Dancer in $Dancers.get_children():
-		move_dancer(dancer)
+		update_dancer(dancer)
 	Global.clear_minds()
 
 func assign_controllers(controllers: Array[String]) -> void:
@@ -85,16 +98,16 @@ func kill(victim: Dancer) -> void:
 func _unhandled_input(_event: InputEvent) -> void:
 	if $Tick.time_left < $Tick.wait_time / 2.0:
 		check_inputs()
-	for shooter: Dancer in $Dancers.get_children():
-		var dir: Vector2i = shooter.move_direction()
-		var controller: String = shooter.controller
-		if controller != "" and Input.is_action_just_pressed("shoot_" + controller) and dir != Vector2i.ZERO:
-			shoot(shooter)
+	#for shooter: Dancer in $Dancers.get_children():
+		#var dir: Vector2i = shooter.move_direction()
+		#var controller: String = shooter.controller
+		#if controller != "" and Input.is_action_just_pressed("shoot_" + controller) and dir != Vector2i.ZERO:
+			#shoot(shooter)
 
 
-func shoot(shooter: Dancer)->void:
+func shoot(shooter: Dancer, direction)->void:
 	$GunSound.play()
-	var dir: Vector2i = shooter.move_direction()
+	var dir: Vector2i = direction
 	var p: Vector2i = shooter.pos
 	p += dir
 	for i in range(kill_range):
@@ -118,5 +131,5 @@ func check_inputs() -> void:
 			Global.plan_direction(controller, Vector2i.LEFT)
 		if Input.is_action_pressed("right_" + controller):
 			Global.plan_direction(controller, Vector2i.RIGHT)
-		if Input.is_action_pressed("shoot" + controller):
+		if Input.is_action_pressed("shoot_" + controller):
 			Global.plan_shoot(controller)

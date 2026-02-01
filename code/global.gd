@@ -1,7 +1,7 @@
 extends Node
 
 const tile_size: float = 128
-const tick_duration: float = 1.5
+const tick_duration: float = 1.2
 
 
 class Mind extends RefCounted:
