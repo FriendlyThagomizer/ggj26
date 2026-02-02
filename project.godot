@@ -14,10 +14,10 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 
 [application]
 
-config/name="GGJ26"
+config/name="Death Waltz"
 run/main_scene="uid://dgp3xal8t7tmy"
 config/features=PackedStringArray("4.6", "Forward Plus")
-config/icon="res://icon.svg"
+config/icon="uid://dahw7vq2su7j4"
 
 [autoload]
 
