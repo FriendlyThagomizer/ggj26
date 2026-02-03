@@ -122,7 +122,7 @@ func end_round(players: Array[Dancer]) -> void:
 		%WhoWon.text = "All players died"
 	else:
 		%WhoWon.text = Global.player_names[players[0].controller] + " won"
-	pause_ticks = 10
+	pause_ticks = 4
 	should_restart = true
 	
 func living_players() -> Array[Dancer]:
