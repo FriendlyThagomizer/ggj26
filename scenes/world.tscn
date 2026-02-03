@@ -190,7 +190,7 @@ size_flags_vertical = 1
 theme = ExtResource("7_37qwj")
 theme_override_colors/font_color = Color(0.8039216, 0.7294118, 0.57254905, 1)
 theme_override_font_sizes/font_size = 56
-text = "Aaron Arowkey"
+text = "Aaron Arrows"
 
 [node name="VBoxContainer" type="VBoxContainer" parent="UI" unique_id=1057517135]
 anchors_preset = 1

@@ -122,7 +122,7 @@ func end_round(players: Array[Dancer]) -> void:
 		%WhoWon.text = "All players died"
 	else:
 		%WhoWon.text = Global.player_names[players[0].controller] + " won"
-	pause_ticks = 4
+	pause_ticks = 10
 	should_restart = true
 	
 func living_players() -> Array[Dancer]:
@@ -204,7 +204,7 @@ func shoot(shooter: Dancer, direction)->void:
 		if victim is Dancer and victim != shooter:
 			if Global.has_controller(victim.controller):
 				shooter.kills += 1
-			kill(victim)
+			kill.call_deferred(victim)
 			break
 		p += dir
 
